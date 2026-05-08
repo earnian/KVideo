@@ -17,6 +17,9 @@ const nextConfig: NextConfig = {
   },
 
   images: {
+    // 🔧 禁用 Next.js 内置图片优化，规避 Netlify CDN 导致的“千图一面”缓存问题
+    unoptimized: true,
+
     remotePatterns: [
       // Douban images
       {
@@ -109,7 +112,7 @@ const nextConfig: NextConfig = {
         hostname: '**.top',
       },
     ],
-    // Add image optimization for better performance
+    // ⚠️ 以下两行在 unoptimized: true 时会被忽略，可保留或删除
     formats: ['image/webp'],
     minimumCacheTTL: 60,
   },
